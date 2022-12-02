@@ -5,6 +5,7 @@ import Controlador.ConfiguracionVentanas;
 import Controlador.Utils;
 import Estructuras.ListaDoble.ListaDoble;
 import Modelo.Cliente;
+import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
@@ -49,7 +50,23 @@ public class VentanaClientes extends javax.swing.JDialog {
     }
 
     public void establecerAccionesLables() {
-        accLabel.establecerAccion(lblCerrar, new MenuPrincipal(), this);
+        lblCerrar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                dispose();
+                new MenuPrincipal().setVisible(true);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent evt) {
+                lblCerrar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent evt) {
+                lblCerrar.setCursor(Cursor.getDefaultCursor());
+            }
+        });
     }
 
     public void rellenarTabla() {

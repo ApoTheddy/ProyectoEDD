@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/Modelo/Ejercicios/Ejercicio.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>4</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jesus/Desktop/Java/ProyectoEDD/src/Vista/VentanaClientes.java</file>
-            <file>file:/C:/Users/Jesus/Desktop/Java/ProyectoEDD/src/Controlador/AccionesLabel.java</file>
-            <file>file:/C:/Users/Jesus/Desktop/Java/ProyectoEDD/src/Vista/MenuPrincipal.java</file>
+            <file>file:/home/jesus/Documentos/Java/ProyectoEDD/src/Vista/VentanaClientes.java</file>
+            <file>file:/home/jesus/Documentos/Java/ProyectoEDD/src/Controlador/Api.java</file>
+            <file>file:/home/jesus/Documentos/Java/ProyectoEDD/src/Vista/MenuPrincipal.java</file>
+            <file>file:/home/jesus/Documentos/Java/ProyectoEDD/src/Vista/VentanaEjercicios.java</file>
+            <file>file:/home/jesus/Documentos/Java/ProyectoEDD/src/Componentes/CardEjercicio.java</file>
         </group>
     </open-files>
 </project-private>

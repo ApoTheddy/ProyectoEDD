@@ -1,2 +1,0 @@
-Models.ICliente
-Models.Cliente

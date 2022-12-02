@@ -38,7 +38,7 @@ public class AccionesLabel {
       public void establecerAccion(JLabel label, JFrame ventana, JDialog ventanaActual) {
         label.addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent evt) {
+            public void mouseClicked(MouseEvent evt) {
                 ventana.setVisible(true);
                 ventanaActual.dispose();
             }
@@ -55,5 +55,4 @@ public class AccionesLabel {
 
         });
     }
-
 }
