@@ -1,8 +1,10 @@
 package Modelo.Ejercicios;
 
+import java.util.ArrayList;
 import org.json.JSONArray;
+import utils.Functions;
 
-public class Ejercicio {
+public class Ejercicio extends Functions {
 
     private int id;
     private String uuid;
@@ -63,8 +65,16 @@ public class Ejercicio {
         return aliases;
     }
 
-    public JSONArray getNotes() {
-        return notes;
+    public ArrayList<Nota> getNotes() {
+        ArrayList<Nota> notas = new ArrayList<>();
+
+        for (int i = 0; i < notes.length(); ++i) {
+            int id = toJson(i, notes).getInt("id");
+            int exercise = toJson(i, notes).getInt("exercise");
+            String comment = toJson(i, notes).getString("comment");
+            notas.add(new Nota(id, exercise, comment));
+        }
+        return notas;
     }
 
     public JSONArray getAuthor_history() {

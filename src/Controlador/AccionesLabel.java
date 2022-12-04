@@ -14,12 +14,11 @@ public class AccionesLabel {
     }
 
     // Establece las acciones de los labels que le pasemos por parametros
-    public void establecerAccion(JLabel label, JDialog ventana, JFrame ventanaActual) {
+    public void establecerAccion(JLabel label, JDialog ventana) {
         label.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent evt) {
                 ventana.setVisible(true);
-                ventanaActual.dispose();
             }
 
             @Override
@@ -34,13 +33,12 @@ public class AccionesLabel {
 
         });
     }
-    
-      public void establecerAccion(JLabel label, JFrame ventana, JDialog ventanaActual) {
+
+    public void establecerAccion(JLabel label, JFrame ventana) {
         label.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent evt) {
                 ventana.setVisible(true);
-                ventanaActual.dispose();
             }
 
             @Override

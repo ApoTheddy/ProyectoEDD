@@ -1,5 +1,7 @@
 package Vista;
 
+import Vista.Comidas.VentanaComidas;
+import Vista.Ejercicios.VentanaEjercicios;
 import Controlador.AccionesLabel;
 import Controlador.ConfiguracionVentanas;
 
@@ -18,10 +20,10 @@ public final class MenuPrincipal extends javax.swing.JFrame {
     }
 
     public void estableceAccionesLabels() {
-        accLabel.establecerAccion(lblClientes, new VentanaClientes(), this);
-        accLabel.establecerAccion(lblEmpleados, new VentanaEmpleados(), this);
-        accLabel.establecerAccion(lblComidas, new VentanaComidas(), this);
-        accLabel.establecerAccion(lblEjercicios, new VentanaEjercicios(), this);
+        accLabel.establecerAccion(lblClientes, new VentanaClientes());
+        accLabel.establecerAccion(lblEmpleados, new VentanaEmpleados());
+        accLabel.establecerAccion(lblComidas, new VentanaComidas());
+        accLabel.establecerAccion(lblEjercicios, new VentanaEjercicios());
     }
 
     @SuppressWarnings("unchecked")

@@ -45,7 +45,6 @@ public class Receta {
     public Receta() {
     }
     
-    ;
     
     public Receta(boolean vegetarian, boolean vegan, boolean glutenFree, boolean dairyFree, boolean veryHealthy, boolean cheap, boolean veryPopular, boolean sustainable, boolean lowFodmap, double weightWatcherSmartPoints, String gaps, double preparationMinutes, double cookingMinutes, int aggregateLikes, int healthScore, String creditsText, String sourceName, double pricePerServing, JSONArray extendedIngredients, long id, String title, int readyInMinutes, int servings, String sourceUrl, String image, String imageType, String summary, JSONArray cuisines, JSONArray dishTypes, JSONArray diets, JSONArray occasions, String instructions, JSONArray analyzedInstructions, Object originalId, String spoonacularSourceUrl) {
         this.vegetarian = vegetarian;

@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 public class VentanaClientes extends javax.swing.JDialog {
 
     private final ConfiguracionVentanas ventana = new ConfiguracionVentanas();
-    private final AccionesLabel accLabel = new AccionesLabel();
 
     private final String[][] data = {};
     private final String[] cabecera = {"N", "NOMBRES", "APELLIDOS", "PESO", "FECHA INSCRIPCION"};
@@ -46,27 +45,6 @@ public class VentanaClientes extends javax.swing.JDialog {
 
         deshabilitarBotones();
 
-        establecerAccionesLables();
-    }
-
-    public void establecerAccionesLables() {
-        lblCerrar.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent evt) {
-                dispose();
-                new MenuPrincipal().setVisible(true);
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent evt) {
-                lblCerrar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent evt) {
-                lblCerrar.setCursor(Cursor.getDefaultCursor());
-            }
-        });
     }
 
     public void rellenarTabla() {
@@ -121,10 +99,8 @@ public class VentanaClientes extends javax.swing.JDialog {
         btnEditarCliente = new javax.swing.JButton();
         btnEliminarCliente = new javax.swing.JButton();
         btnVerMas = new javax.swing.JButton();
-        lblCerrar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -188,8 +164,6 @@ public class VentanaClientes extends javax.swing.JDialog {
             }
         });
 
-        lblCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_cerrar.png"))); // NOI18N
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -201,8 +175,7 @@ public class VentanaClientes extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblCerrar))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -216,15 +189,9 @@ public class VentanaClientes extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(15, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(28, 28, 28))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblCerrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -333,7 +300,6 @@ public class VentanaClientes extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCerrar;
     private javax.swing.JTable tblClientes;
     // End of variables declaration//GEN-END:variables
 }

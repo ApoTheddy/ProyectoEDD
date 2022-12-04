@@ -2,25 +2,41 @@ package Componentes;
 
 import java.awt.Image;
 import Modelo.Ejercicios.Informacion;
-import Vista.InformacionEjercicio;
-import com.formdev.flatlaf.extras.FlatSVGIcon;
+import Vista.Ejercicios.InformacionEjercicio;
+import Vista.Ejercicios.VentanaEjercicios;
 import java.awt.Cursor;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.MalformedURLException;
+import java.io.OutputStream;
+import java.net.URI;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import java.util.function.Function;
 
 public class CardEjercicio extends javax.swing.JPanel {
 
     private Informacion informacion;
+    private boolean esFavorito;
+    private Function<String, String> refrescarFavoritos;
 
-    public CardEjercicio(Informacion informacion) {
+    public CardEjercicio(Informacion informacion, boolean esFavorito, Function<String, String> refrescarFavoritos) {
         this.informacion = informacion;
+        this.esFavorito = esFavorito;
         initComponents();
+        this.refrescarFavoritos = refrescarFavoritos;
 
         establecerValores();
+
+        if (esFavorito) {
+            jMenuItem1.setText("Eliminar de Favorito");
+            jMenuItem1.setIcon(new ImageIcon(getClass().getResource("/Imagenes/remove_favorite24px.png")));
+        }
     }
 
     public void establecerValores() {
@@ -34,9 +50,8 @@ public class CardEjercicio extends javax.swing.JPanel {
             for (int i = 0; i < informacion.getImages().size(); ++i) {
                 try {
                     URL url = new URL(informacion.getImages().get(i).getImage());
-                    Image img = ImageIO.read(url).getScaledInstance(200, 200, 109);
-
-                    lblImagen.setIcon(new ImageIcon(img));
+                    BufferedImage img = ImageIO.read(url.openStream());
+                    lblImagen.setIcon(new ImageIcon(img.getScaledInstance(200, 200, 0)));
                 } catch (IOException ioex) {
                     JOptionPane.showMessageDialog(null, "Ocurrio un error al procesar la imagen, " + ioex.getMessage());
                 }
@@ -50,6 +65,8 @@ public class CardEjercicio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ppmFavoritos = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblCategoria = new javax.swing.JLabel();
@@ -57,6 +74,16 @@ public class CardEjercicio extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         lblImagen = new javax.swing.JLabel();
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/favorito24px.png"))); // NOI18N
+        jMenuItem1.setText("Agregar Favorito");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        ppmFavoritos.add(jMenuItem1);
+
+        setComponentPopupMenu(ppmFavoritos);
         setMaximumSize(new java.awt.Dimension(200, 300));
         setMinimumSize(new java.awt.Dimension(200, 290));
         setPreferredSize(new java.awt.Dimension(220, 350));
@@ -87,7 +114,7 @@ public class CardEjercicio extends javax.swing.JPanel {
 
         lblEquipamiento.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
         lblEquipamiento.setForeground(new java.awt.Color(0, 0, 0));
-        lblEquipamiento.setText("default");
+        lblEquipamiento.setText("none");
 
         jLabel5.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -162,13 +189,41 @@ public class CardEjercicio extends javax.swing.JPanel {
         setCursor(getCursor().getDefaultCursor());
     }//GEN-LAST:event_formMouseExited
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        boolean existe = false;
+        if (VentanaEjercicios.favoritos.isEmpty()) {
+            VentanaEjercicios.favoritos.add(informacion);
+        } else if (esFavorito) {
+            for (int i = 0; i < VentanaEjercicios.favoritos.size(); ++i) {
+                if (VentanaEjercicios.favoritos.get(i).getId() == informacion.getId()) {
+                    VentanaEjercicios.favoritos.remove(i);
+                    refrescarFavoritos.apply("-");
+                    break;
+                }
+            }
+        } else {
+            for (int i = 0; i < VentanaEjercicios.favoritos.size(); ++i) {
+                if (VentanaEjercicios.favoritos.get(i).getId() == informacion.getId()) {
+                    existe = true;
+                }
+            }
+            if (!existe) {
+                VentanaEjercicios.favoritos.add(informacion);
+            } else {
+                JOptionPane.showMessageDialog(null, "EL ejercicio ya se encuentra en sus favoritos");
+            }
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCategoria;
     private javax.swing.JLabel lblEquipamiento;
     private javax.swing.JLabel lblImagen;
+    private javax.swing.JPopupMenu ppmFavoritos;
     // End of variables declaration//GEN-END:variables
 }
