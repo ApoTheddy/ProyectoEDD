@@ -112,6 +112,7 @@ public class Api {
             con.disconnect();
         }
         
+        
         return ejercicios;
     }
 

@@ -5,15 +5,7 @@
             <url>src/Modelo/Ejercicios/Ejercicio.java</url>
             <bookmark id="1">
                 <name/>
-                <line>6</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
-            <url>src/Componentes/CardEjercicio.java</url>
-            <bookmark id="2">
-                <name/>
-                <line>59</line>
+                <line>7</line>
                 <key/>
             </bookmark>
         </file>
@@ -25,16 +17,16 @@
                 <key/>
             </bookmark>
         </file>
+        <file>
+            <url>src/Componentes/CardEjercicio.java</url>
+            <bookmark id="2">
+                <name/>
+                <line>59</line>
+                <key/>
+            </bookmark>
+        </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/jesus/Documentos/Java/ProyectoEDD/src/Vista/Comidas/VentanaComidas.java</file>
-            <file>file:/home/jesus/Documentos/Java/ProyectoEDD/src/Controlador/ManejadorArchivo.java</file>
-            <file>file:/home/jesus/Documentos/Java/ProyectoEDD/src/Vista/VentanaClientes.java</file>
-            <file>file:/home/jesus/Documentos/Java/ProyectoEDD/src/Controlador/AccionesLabel.java</file>
-            <file>file:/home/jesus/Documentos/Java/ProyectoEDD/src/Vista/MenuPrincipal.java</file>
-            <file>file:/home/jesus/Documentos/Java/ProyectoEDD/src/Modelo/Cliente.java</file>
-            <file>file:/home/jesus/Documentos/Java/ProyectoEDD/src/Vista/VerMas.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

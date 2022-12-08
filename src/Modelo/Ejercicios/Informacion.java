@@ -1,25 +1,44 @@
 package Modelo.Ejercicios;
 
 import java.util.ArrayList;
+import lombok.Getter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import utils.Functions;
 
 public class Informacion extends Functions {
 
+    @Getter
     private int id;
+
+    @Getter
     private String uuid;
+
+    @Getter
     private String creation_date;
+
     private JSONObject category;
     private JSONArray muscles;
-    private JSONArray muscles_secondary;
     private JSONArray equipment;
-    private JSONObject license;
     private JSONArray images;
     private JSONArray exercises;
+
+    @Getter
+    private JSONArray muscles_secondary;
+
+    @Getter
+    private JSONObject license;
+
+    @Getter
     private Object variations;
+
+    @Getter
     private JSONArray videos;
+
+    @Getter
     private JSONArray author_history;
+
+    @Getter
     private JSONArray total_authors_history;
 
     public Informacion() {
@@ -41,18 +60,6 @@ public class Informacion extends Functions {
         this.videos = videos;
         this.author_history = author_history;
         this.total_authors_history = total_authors_history;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public String getCreation_date() {
-        return creation_date;
     }
 
     public Categoria getCategory() {
@@ -148,21 +155,4 @@ public class Informacion extends Functions {
 
         return ejercicios;
     }
-
-    public Object getVariations() {
-        return variations;
-    }
-
-    public JSONArray getVideos() {
-        return videos;
-    }
-
-    public JSONArray getAuthor_history() {
-        return author_history;
-    }
-
-    public JSONArray getTotal_authors_history() {
-        return total_authors_history;
-    }
-
 }

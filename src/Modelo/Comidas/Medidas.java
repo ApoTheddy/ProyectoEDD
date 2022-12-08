@@ -1,5 +1,6 @@
 package Modelo.Comidas;
 
+import lombok.Getter;
 import org.json.JSONObject;
 
 public class Medidas {

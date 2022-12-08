@@ -1,6 +1,5 @@
 package Vista.Comidas;
 
-import Componentes.CardComida;
 import Controlador.Api;
 import Modelo.Comidas.*;
 import java.util.ArrayList;

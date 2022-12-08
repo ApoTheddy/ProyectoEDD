@@ -1,17 +1,35 @@
 package Modelo.Ejercicios;
 
+import lombok.Getter;
 import org.json.JSONArray;
 
 public class Imagen {
 
+    @Getter
     private int id;
+
+    @Getter
     private String uuid;
+
+    @Getter
     private int exercise_base;
+
+    @Getter
     private String image;
+
+    @Getter
     private boolean is_main;
+
+    @Getter
     private String style;
+
+    @Getter
     private int license;
+
+    @Getter
     private String license_author;
+
+    @Getter
     private JSONArray author_history;
 
     public Imagen() {
@@ -27,42 +45,6 @@ public class Imagen {
         this.license = license;
         this.license_author = license_author;
         this.author_history = author_history;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public int getExercise_base() {
-        return exercise_base;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public boolean isIs_main() {
-        return is_main;
-    }
-
-    public String getStyle() {
-        return style;
-    }
-
-    public int getLicense() {
-        return license;
-    }
-
-    public String getLicense_author() {
-        return license_author;
-    }
-
-    public JSONArray getAuthor_history() {
-        return author_history;
     }
 
 }

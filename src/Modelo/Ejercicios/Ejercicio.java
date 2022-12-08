@@ -1,20 +1,40 @@
 package Modelo.Ejercicios;
 
 import java.util.ArrayList;
+import lombok.Getter;
 import org.json.JSONArray;
 import utils.Functions;
 
 public class Ejercicio extends Functions {
 
+    @Getter
     private int id;
+
+    @Getter
     private String uuid;
+
+    @Getter
     private String name;
+
+    @Getter
     private int exercise_base;
+
+    @Getter
     private String description;
+
+    @Getter
     private String creation_date;
+
+    @Getter
     private int language;
+
+    @Getter
     private JSONArray aliases;
+
+    @Getter
     private JSONArray notes;
+
+    @Getter
     private JSONArray author_history;
 
     public Ejercicio() {
@@ -33,38 +53,6 @@ public class Ejercicio extends Functions {
         this.author_history = author_history;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getExercise_base() {
-        return exercise_base;
-    }
-
-    public String getDescripcion() {
-        return description;
-    }
-
-    public String getCreation_date() {
-        return creation_date;
-    }
-
-    public int getLanguage() {
-        return language;
-    }
-
-    public JSONArray getAliases() {
-        return aliases;
-    }
-
     public ArrayList<Nota> getNotes() {
         ArrayList<Nota> notas = new ArrayList<>();
 
@@ -75,10 +63,6 @@ public class Ejercicio extends Functions {
             notas.add(new Nota(id, exercise, comment));
         }
         return notas;
-    }
-
-    public JSONArray getAuthor_history() {
-        return author_history;
     }
 
 }

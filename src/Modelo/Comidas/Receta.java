@@ -1,51 +1,119 @@
 package Modelo.Comidas;
 
 import java.util.ArrayList;
+import lombok.Getter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Receta {
-    
+
+    @Getter
     private boolean vegetarian;
+
+    @Getter
     private boolean vegan;
+
+    @Getter
     private boolean glutenFree;
+
+    @Getter
     private boolean dairyFree;
+
+    @Getter
     private boolean veryHealthy;
+
+    @Getter
     private boolean cheap;
+
+    @Getter
     private boolean veryPopular;
+
+    @Getter
     private boolean sustainable;
+
+    @Getter
     private boolean lowFodmap;
+
+    @Getter
     private double weightWatcherSmartPoints;
+
+    @Getter
     private String gaps;
+
+    @Getter
     private double preparationMinutes;
+
+    @Getter
     private double cookingMinutes;
+
+    @Getter
     private int aggregateLikes;
+
+    @Getter
     private int healthScore;
+
+    @Getter
     private String creditsText;
+
+    @Getter
     private String sourceName;
+
+    @Getter
     private double pricePerServing;
+
     private JSONArray extendedIngredients;
+
+    @Getter
     private long id;
+
+    @Getter
     private String title;
+
+    @Getter
     private int readyInMinutes;
+
+    @Getter
     private int servings;
+
+    @Getter
     private String sourceUrl;
+
+    @Getter
     private String image;
+
+    @Getter
     private String imageType;
+
+    @Getter
     private String summary;
+
+    @Getter
     private JSONArray cuisines;
+
+    @Getter
     private JSONArray dishTypes;
+
+    @Getter
     private JSONArray diets;
+
+    @Getter
     private JSONArray occasions;
+
+    @Getter
     private String instructions;
+
+    @Getter
     private JSONArray analyzedInstructions;
+
+    @Getter
     private Object originalId;
+
+    @Getter
     private String spoonacularSourceUrl;
-    
+
     public Receta() {
     }
-    
-    
+
     public Receta(boolean vegetarian, boolean vegan, boolean glutenFree, boolean dairyFree, boolean veryHealthy, boolean cheap, boolean veryPopular, boolean sustainable, boolean lowFodmap, double weightWatcherSmartPoints, String gaps, double preparationMinutes, double cookingMinutes, int aggregateLikes, int healthScore, String creditsText, String sourceName, double pricePerServing, JSONArray extendedIngredients, long id, String title, int readyInMinutes, int servings, String sourceUrl, String image, String imageType, String summary, JSONArray cuisines, JSONArray dishTypes, JSONArray diets, JSONArray occasions, String instructions, JSONArray analyzedInstructions, Object originalId, String spoonacularSourceUrl) {
         this.vegetarian = vegetarian;
         this.vegan = vegan;
@@ -83,83 +151,11 @@ public class Receta {
         this.originalId = originalId;
         this.spoonacularSourceUrl = spoonacularSourceUrl;
     }
-    
-    public boolean isVegetarian() {
-        return vegetarian;
-    }
-    
-    public boolean isVegan() {
-        return vegan;
-    }
-    
-    public boolean isGlutenFree() {
-        return glutenFree;
-    }
-    
-    public boolean isDairyFree() {
-        return dairyFree;
-    }
-    
-    public boolean isVeryHealthy() {
-        return veryHealthy;
-    }
-    
-    public boolean isCheap() {
-        return cheap;
-    }
-    
-    public boolean isVeryPopular() {
-        return veryPopular;
-    }
-    
-    public boolean isSustainable() {
-        return sustainable;
-    }
-    
-    public boolean isLowFodmap() {
-        return lowFodmap;
-    }
-    
-    public double getWeightWatcherSmartPoints() {
-        return weightWatcherSmartPoints;
-    }
-    
-    public String getGaps() {
-        return gaps;
-    }
-    
-    public double getPreparationMinutes() {
-        return preparationMinutes;
-    }
-    
-    public double getCookingMinutes() {
-        return cookingMinutes;
-    }
-    
-    public int getAggregateLikes() {
-        return aggregateLikes;
-    }
-    
-    public int getHealthScore() {
-        return healthScore;
-    }
-    
-    public String getCreditsText() {
-        return creditsText;
-    }
-    
-    public String getSourceName() {
-        return sourceName;
-    }
-    
-    public double getPricePerServing() {
-        return pricePerServing;
-    }
-    
+
     public ArrayList<Ingredientes> getExtendedIngredients() {
-        ArrayList<Ingredientes> ingredientes = new ArrayList<>();        
+        ArrayList<Ingredientes> ingredientes = new ArrayList<>();
         for (int i = 0; i < extendedIngredients.length(); ++i) {
-            
+
             long id = getData(i).getLong("id");
             String aisle = getData(i).getString("aisle");
             String image = getData(i).getString("image");
@@ -177,73 +173,9 @@ public class Receta {
         }
         return ingredientes;
     }
-    
+
     private JSONObject getData(int index) {
         return (JSONObject) extendedIngredients.get(index);
     }
-    
-    public long getId() {
-        return id;
-    }
-    
-    public String getTitle() {
-        return title;
-    }
-    
-    public int getReadyInMinutes() {
-        return readyInMinutes;
-    }
-    
-    public int getServings() {
-        return servings;
-    }
-    
-    public String getSourceUrl() {
-        return sourceUrl;
-    }
-    
-    public String getImage() {
-        return image;
-    }
-    
-    public String getImageType() {
-        return imageType;
-    }
-    
-    public String getSummary() {
-        return summary;
-    }
-    
-    public JSONArray getCuisines() {
-        return cuisines;
-    }
-    
-    public JSONArray getDishTypes() {
-        return dishTypes;
-    }
-    
-    public JSONArray getDiets() {
-        return diets;
-    }
-    
-    public JSONArray getOccasions() {
-        return occasions;
-    }
-    
-    public String getInstructions() {
-        return instructions;
-    }
-    
-    public JSONArray getAnalyzedInstructions() {
-        return analyzedInstructions;
-    }
-    
-    public Object getOriginalId() {
-        return originalId;
-    }
-    
-    public String getSpoonacularSourceUrl() {
-        return spoonacularSourceUrl;
-    }
-    
+
 }

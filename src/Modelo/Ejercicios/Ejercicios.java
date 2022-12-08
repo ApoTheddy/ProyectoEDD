@@ -1,15 +1,23 @@
 package Modelo.Ejercicios;
 
 import java.util.ArrayList;
+import lombok.Getter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import utils.Functions;
 
 public class Ejercicios extends Functions {
 
+    @Getter
     private int count;
+
+    @Getter
     private String next;
+
+    @Getter
     private Object previous;
+
+    @Getter
     private JSONArray results;
 
     public Ejercicios() {
@@ -20,18 +28,6 @@ public class Ejercicios extends Functions {
         this.next = next;
         this.previous = previous;
         this.results = results;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public String getNext() {
-        return next;
-    }
-
-    public Object getPrevious() {
-        return previous;
     }
 
     public ArrayList<Informacion> getResults() {
@@ -55,7 +51,6 @@ public class Ejercicios extends Functions {
 
             resultados.add(new Informacion(id, uuid, creation_date, category, muscles, muscles_secondary, equipment, license, images, exercises, variations, videos, author_history, total_authors_history));
         }
-
         return resultados;
     }
 

@@ -1,7 +1,13 @@
 package Modelo.Ejercicios;
 
+import lombok.Getter;
+
 public class Equipamento {
+
+    @Getter
     private int id;
+
+    @Getter
     private String name;
 
     public Equipamento() {
@@ -11,13 +17,4 @@ public class Equipamento {
         this.id = id;
         this.name = name;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-    
 }

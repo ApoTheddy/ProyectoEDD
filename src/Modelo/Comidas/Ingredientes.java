@@ -1,21 +1,42 @@
 package Modelo.Comidas;
 
+import lombok.Getter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Ingredientes {
 
+    @Getter
     private long id;
+
+    @Getter
     private String aisle;
+
+    @Getter
     private String image;
+
+    @Getter
     private String consistency;
+
+    @Getter
     private String name;
+
+    @Getter
     private String nameClean;
+
+    @Getter
     private String original;
+
+    @Getter
     private String originalName;
+
+    @Getter
     private double amount;
     private String unit;
+
+    @Getter
     private JSONArray meta;
+
     private JSONObject measures;
 
     public Ingredientes() {
@@ -34,50 +55,6 @@ public class Ingredientes {
         this.unit = unit;
         this.meta = meta;
         this.measures = measures;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getAisle() {
-        return aisle;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public String getConsistency() {
-        return consistency;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getNameClean() {
-        return nameClean;
-    }
-
-    public String getOriginal() {
-        return original;
-    }
-
-    public String getOriginalName() {
-        return originalName;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public JSONArray getMeta() {
-        return meta;
     }
 
     public Medidas getMeasures() {

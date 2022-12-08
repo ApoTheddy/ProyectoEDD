@@ -27,7 +27,7 @@ public class ContenedorEjercicio extends javax.swing.JPanel {
 
     public void establecerDatos() {
         lblTituloEjercicio6.setText(ejercicio.getName());
-        txaDescripcion.setText("\t" + ejercicio.getDescripcion());
+        txaDescripcion.setText("\t" + ejercicio.getDescription());
         JLabel lblImg;
 
         if (!imagenes.isEmpty()) {

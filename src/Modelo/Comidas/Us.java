@@ -1,9 +1,16 @@
 package Modelo.Comidas;
 
+import lombok.Getter;
+
 public class Us {
 
+    @Getter
     private double amount;
+
+    @Getter
     private String unitShort;
+
+    @Getter
     private String unitLong;
 
     public Us() {
@@ -15,18 +22,4 @@ public class Us {
         this.unitShort = unitShort;
         this.unitLong = unitLong;
     }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public String getUnitShort() {
-        return unitShort;
-    }
-
-    public String getUnitLong() {
-        return unitLong;
-    }
-
-   
 }

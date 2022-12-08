@@ -1,6 +1,5 @@
 package Vista.Ejercicios;
 
-import Componentes.CardEjercicio;
 import Controlador.Api;
 import Controlador.ConfiguracionVentanas;
 import Modelo.Ejercicios.Ejercicios;

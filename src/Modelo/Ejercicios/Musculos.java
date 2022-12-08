@@ -1,12 +1,25 @@
 package Modelo.Ejercicios;
 
+import lombok.Getter;
+
 public class Musculos {
 
+    @Getter
     private int id;
+
+    @Getter
     private String name;
+
+    @Getter
     private String name_en;
+
+    @Getter
     private boolean is_front;
+
+    @Getter
     private String image_url_main;
+
+    @Getter
     private String image_url_secondary;
 
     public Musculos() {
@@ -20,29 +33,4 @@ public class Musculos {
         this.image_url_main = image_url_main;
         this.image_url_secondary = image_url_secondary;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getName_en() {
-        return name_en;
-    }
-
-    public boolean isIs_front() {
-        return is_front;
-    }
-
-    public String getImage_url_main() {
-        return image_url_main;
-    }
-
-    public String getImage_url_secondary() {
-        return image_url_secondary;
-    }
-
 }

@@ -1,11 +1,12 @@
 package Vista;
 
-import Controlador.AccionesLabel;
+import Vista.Cliente.VerMasCliente;
+import Vista.Cliente.AgregarCliente;
 import Controlador.ConfiguracionVentanas;
+import Controlador.ManejadorArchivo;
 import Controlador.Utils;
-import Estructuras.ListaDoble.ListaDoble;
-import Modelo.Cliente;
-import java.awt.Cursor;
+import Modelo.Cliente.ListaDobleCliente;
+import Modelo.Cliente.Cliente;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
@@ -19,10 +20,11 @@ public class VentanaClientes extends javax.swing.JDialog {
 
     private final String[][] data = {};
     private final String[] cabecera = {"N", "NOMBRES", "APELLIDOS", "PESO", "FECHA INSCRIPCION"};
-    private final ListaDoble lista = new ListaDoble();
+    private ListaDobleCliente lista = new ListaDobleCliente();
     private DefaultTableModel modelo;
     private Function<Cliente, Cliente> refrescarTabla;
     private final Utils util = new Utils();
+    private final ManejadorArchivo archivo = new ManejadorArchivo();
 
     public VentanaClientes() {
         super(new JFrame(), false);
@@ -31,28 +33,23 @@ public class VentanaClientes extends javax.swing.JDialog {
         ventana.configuracionInicial(this, "CLIENTES");
 
         establecerConfiguracionTabla();
+        lista = archivo.obtenerDatosClientes();
 
         rellenarTabla();
 
         escucharCallbacks();
 
-        // test
-        lista.agregarInicio(new Cliente("Juan", "Esquives", 19, "12345678", 80.0, 1.75, "12/12/2002", "12/12/2002"));
-        lista.agregarInicio(new Cliente("Jesus", "Zapata", 19, "12345678", 80.0, 1.75, "12/12/2002", "12/12/2002"));
-        lista.agregarInicio(new Cliente("Victoria", "Esquivel", 19, "12345678", 80.0, 1.75, "12/12/2002", "12/12/2002"));
-        rellenarTabla();
-        // test
-
         deshabilitarBotones();
-
     }
 
     public void rellenarTabla() {
         setearTabla();
 
-        for (int i = 0; i < lista.obtenerTamanio(); ++i) {
-            Object[] fila = {(i + 1), lista.getCliente(i).getNombres(), lista.getCliente(i).getApellidos(), lista.getCliente(i).getPeso(), lista.getCliente(i).getFechaInscripcion()};
-            modelo.addRow(fila);
+        if (!lista.estaVacia()) {
+            for (int i = 0; i < lista.getTamanio(); ++i) {
+                Object[] fila = {(i + 1), lista.getCliente(i).getNombres(), lista.getCliente(i).getApellidos(), lista.getCliente(i).getPeso(), lista.getCliente(i).getFechaInscripcion()};
+                modelo.addRow(fila);
+            }
         }
 
     }
@@ -72,7 +69,7 @@ public class VentanaClientes extends javax.swing.JDialog {
     public void establecerConfiguracionTabla() {
         tblClientes.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
-                util.habilitarBotones(btnEditarCliente, btnEliminarCliente, btnVerMas);
+                util.habilitarBotones(btnEliminarCliente, btnVerMas);
             }
         });
 
@@ -96,7 +93,6 @@ public class VentanaClientes extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
         btnAgregarCliente = new javax.swing.JButton();
-        btnEditarCliente = new javax.swing.JButton();
         btnEliminarCliente = new javax.swing.JButton();
         btnVerMas = new javax.swing.JButton();
 
@@ -131,16 +127,6 @@ public class VentanaClientes extends javax.swing.JDialog {
         btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarClienteActionPerformed(evt);
-            }
-        });
-
-        btnEditarCliente.setBackground(new java.awt.Color(102, 153, 255));
-        btnEditarCliente.setFont(new java.awt.Font("Victor Mono SemiBold", 0, 14)); // NOI18N
-        btnEditarCliente.setForeground(new java.awt.Color(0, 0, 0));
-        btnEditarCliente.setText("EDITAR CLIENTE");
-        btnEditarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarClienteActionPerformed(evt);
             }
         });
 
@@ -180,9 +166,7 @@ public class VentanaClientes extends javax.swing.JDialog {
                         .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 467, Short.MAX_VALUE)
                         .addComponent(btnVerMas, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -195,7 +179,6 @@ public class VentanaClientes extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVerMas, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,14 +210,6 @@ public class VentanaClientes extends javax.swing.JDialog {
         new AgregarCliente(refrescarTabla).setVisible(true);
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
-    private void btnEditarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarClienteActionPerformed
-        int filaSeleccionada = tblClientes.getSelectedRow();
-
-        if (filaSeleccionada != -1) {
-            JOptionPane.showConfirmDialog(null, "xdd");
-        }
-    }//GEN-LAST:event_btnEditarClienteActionPerformed
-
     private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
         int filaSeleccionada = tblClientes.getSelectedRow();
 
@@ -246,6 +221,7 @@ public class VentanaClientes extends javax.swing.JDialog {
                 deshabilitarBotones();
             }
             modelo.removeRow(filaSeleccionada);
+            archivo.actualizarCliente(lista);
             rellenarTabla();
         }
     }//GEN-LAST:event_btnEliminarClienteActionPerformed
@@ -255,17 +231,17 @@ public class VentanaClientes extends javax.swing.JDialog {
 
         if (filaSeleccionada != -1) {
             Cliente cliente = lista.getCliente(filaSeleccionada);
-            new VerMas(cliente).setVisible(true);
+            new VerMasCliente(cliente).setVisible(true);
             deshabilitarBotones();
         }
     }//GEN-LAST:event_btnVerMasActionPerformed
 
     public void deshabilitarBotones() {
-        util.deshabilitarBotones(btnEditarCliente, btnEliminarCliente, btnVerMas);
+        util.deshabilitarBotones(btnEliminarCliente, btnVerMas);
     }
 
     public void habilitarBotones() {
-        util.habilitarBotones(btnEditarCliente, btnEliminarCliente, btnVerMas);
+        util.habilitarBotones(btnEliminarCliente, btnVerMas);
     }
 
     public static void main(String args[]) {
@@ -294,7 +270,6 @@ public class VentanaClientes extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCliente;
-    private javax.swing.JButton btnEditarCliente;
     private javax.swing.JButton btnEliminarCliente;
     private javax.swing.JButton btnVerMas;
     private javax.swing.JLabel jLabel1;
